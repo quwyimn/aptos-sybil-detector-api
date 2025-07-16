@@ -1,6 +1,7 @@
 # --- Core Web Framework ---
 flask
 waitress
+gunicorn
 
 # --- Data Science & Machine Learning ---
 pandas==2.1.4
