@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 # Đường dẫn tới pipeline
 # Lưu ý: Đường dẫn này là tương đối so với thư mục gốc của dự án, không phải thư mục src
-PIPELINE_PATH = 'models/aptos_pro_pipeline.joblib'
+PIPELINE_PATH = '../models/aptos_pro_pipeline.joblib'
 pipeline = None
 
 # Dùng try-except để xử lý việc tải mô hình một cách an toàn
