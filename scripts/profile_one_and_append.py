@@ -1,3 +1,5 @@
+# scripts/profile_one_and_append.py
+
 import requests
 import json
 import time
@@ -18,7 +20,10 @@ WALLET_ADDRESS = "0x8d82d605ce7516d0042ebef208546413c3a0d2d8175303d2997f04cdf624
 LABEL = 0
 
 NODE_URL = "https://fullnode.mainnet.aptoslabs.com/v1"
-OUTPUT_CSV_FILE = "../data/raw/aptos_wallet_features.csv"
+
+# --- SỬA ĐỔI: THIẾT LẬP ĐƯỜNG DẪN ĐỘNG ---
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT_CSV_FILE = os.path.join(BASE_DIR, 'data', 'raw', 'aptos_wallet_features.csv')
 
 
 # ==============================================================================

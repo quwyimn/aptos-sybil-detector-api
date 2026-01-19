@@ -78,19 +78,20 @@ def get_wallet_resources(session, address):
 
 
 # ==============================================================================
-# SECTION 3: MAIN FEATURE ENGINEERING FUNCTION
+# SECTION 3: MAIN FEATURE ENGINEERING FUNCTION (SỬA ĐỔI QUAN TRỌNG)
 # ==============================================================================
 
 def create_feature_dataframe(session, address):
     """
     Orchestrates data fetching and feature creation for a single wallet address.
     Returns a pandas DataFrame ready for the prediction pipeline.
+    This version handles wallets with no transactions correctly.
     """
     print(f"  - Fetching transactions and resources for {address[:10]}...")
     all_transactions = get_all_transactions(session, address)
     resources = get_wallet_resources(session, address)
 
-    # Initialize a dictionary with default values for all features
+    # Initialize a dictionary with default values for ALL features the model expects
     profile = {
         'wallet_age_days': 0, 'apt_balance': 0, 'other_token_count': 0,
         'total_transaction_count': 0, 'successful_transaction_count': 0, 'failed_transaction_count': 0,
@@ -103,9 +104,10 @@ def create_feature_dataframe(session, address):
 
     if not all_transactions:
         print(f"  - WARNING: No transactions found for wallet {address}. Returning default profile.")
+        # Trả về DataFrame với đầy đủ các cột và giá trị mặc định
         return pd.DataFrame([profile])
 
-    # --- Start Feature Calculation ---
+    # --- Start Feature Calculation if transactions exist ---
     profile['total_transaction_count'] = len(all_transactions)
     profile['successful_transaction_count'] = sum(1 for tx in all_transactions if tx.get('success'))
     profile['failed_transaction_count'] = profile['total_transaction_count'] - profile['successful_transaction_count']

@@ -1,0 +1,37 @@
+# ==============================================================================
+# FILE NÀY GIÚP DOCKER IMAGE NHẸ HƠN BẰNG CÁCH BỎ QUA CÁC FILE KHÔNG CẦN THIẾT
+# ==============================================================================
+
+# --- Thư mục Git ---
+# Không bao giờ đưa lịch sử Git vào trong Docker image
+.git/
+.gitignore
+
+# --- Môi trường ảo Python ---
+# Docker sẽ tự tạo môi trường riêng bên trong container
+.venv/
+venv/
+env/
+
+# --- Cache của Python ---
+__pycache__/
+*.pyc
+
+# --- Thư mục cấu hình của IDE ---
+.idea/
+.vscode/
+
+# --- File tạm của Jupyter Notebook ---
+.ipynb_checkpoints/
+
+# --- Dữ liệu, Logs và Models ---
+# Chúng ta không cần đưa dữ liệu huấn luyện, logs, hay các notebook
+# vào trong image của API. Image chỉ cần mã nguồn để chạy.
+data/
+logs/
+models/
+notebooks/
+scripts/
+
+# --- Các file không liên quan đến việc chạy ứng dụng ---
+README.md

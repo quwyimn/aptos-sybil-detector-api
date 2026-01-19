@@ -1,0 +1,33 @@
+# ==============================================================================
+# FILE NÀY DÙNG ĐỂ GIT BỎ QUA CÁC FILE VÀ THƯ MỤC KHÔNG CẦN THIẾT
+# ==============================================================================
+
+# --- Môi trường ảo Python ---
+# Thư mục này chứa các thư viện đã cài đặt, rất nặng và khác nhau trên mỗi máy
+.venv/
+venv/
+env/
+
+# --- Cache và file tạm của Python ---
+# Các file này được Python tự động tạo ra để tăng tốc độ
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Thư mục cấu hình của IDE ---
+.idea/
+.vscode/
+
+# --- File tạm của Jupyter Notebook ---
+# Thư mục chứa các bản sao lưu tự động, không cần thiết trên kho chung
+.ipynb_checkpoints/
+
+# --- Dữ liệu, Logs và Models ---
+data/
+logs/
+models/
+
+# --- Các file hệ thống ---
+.DS_Store
+Thumbs.db
