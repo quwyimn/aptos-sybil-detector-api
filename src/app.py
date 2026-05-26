@@ -1,5 +1,5 @@
 # src/app.py
-
+import os  # THÊM MỚI
 from flask import Flask, request, jsonify
 import joblib
 import requests
@@ -9,9 +9,12 @@ from src.utils import create_feature_dataframe, cyclical_encoder
 
 app = Flask(__name__)
 
-# Đường dẫn tới pipeline
-# Lưu ý: Đường dẫn này là tương đối so với thư mục gốc của dự án, không phải thư mục src
-PIPELINE_PATH = '../models/aptos_pro_pipeline.joblib'
+# --- SỬA ĐỔI: THIẾT LẬP ĐƯỜNG DẪN ĐỘNG ---
+# Lấy đường dẫn thư mục gốc của dự án (đi lên một cấp từ 'src')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Tạo đường dẫn tuyệt đối tới file pipeline
+PIPELINE_PATH = os.path.join(BASE_DIR, 'models', 'aptos_pro_pipeline.joblib')
+
 pipeline = None
 
 # Dùng try-except để xử lý việc tải mô hình một cách an toàn
